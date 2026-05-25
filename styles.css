@@ -244,6 +244,14 @@ main {
   background-size: cover;
 }
 
+.kigali-photo {
+  background:
+    linear-gradient(135deg, rgba(31, 37, 35, 0.04), rgba(31, 37, 35, 0.2)),
+    url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Kigali_skyline.jpg/1280px-Kigali_skyline.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
 .hero-itinerary {
   position: absolute;
   right: 14px;

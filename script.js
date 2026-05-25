@@ -1,5 +1,5 @@
 const state = {
-  city: "Omaha",
+  city: document.body.dataset.city || "Omaha",
   area: "",
   category: "",
   mood: "",
@@ -46,7 +46,9 @@ const experienceCategories = [
   "Coffee",
   "Nightlife",
   "Culture",
+  "Tours",
   "Outdoor/Nature",
+  "Shopping",
   "Hotels",
   "Transportation",
   "Wellness",
@@ -54,6 +56,36 @@ const experienceCategories = [
   "Family Friendly",
   "Date Night"
 ];
+
+function currentCityName() {
+  return state.city || document.body.dataset.city || "Omaha";
+}
+
+function cityListings(city = currentCityName()) {
+  if (typeof ZURI_DATA === "undefined") {
+    return [];
+  }
+
+  return ZURI_DATA.listings.filter((listing) => listing.city === city);
+}
+
+function categoriesForCity(city = currentCityName()) {
+  const listingCategories = new Set(
+    cityListings(city)
+      .filter((listing) => listing.category !== "Ask ZURI")
+      .map((listing) => listing.category)
+  );
+
+  return experienceCategories.filter((category) => listingCategories.has(category));
+}
+
+function areasForCity(city = currentCityName()) {
+  return [...new Set(
+    cityListings(city)
+      .filter((listing) => listing.category !== "Ask ZURI")
+      .map((listing) => listing.area)
+  )].sort();
+}
 
 function addOptions(select, options, placeholder, selectedValue = "") {
   if (!select) {
@@ -133,7 +165,7 @@ function renderCategoryChips() {
   }
 
   elements.categoryChips.innerHTML = "";
-  experienceCategories.forEach((category) => {
+  categoriesForCity().forEach((category) => {
     const chip = document.createElement("button");
     chip.className = `category-chip${state.category === category ? " is-active" : ""}`;
     chip.type = "button";
@@ -290,18 +322,18 @@ function buildItinerary(preferences) {
     return { stops: [], usedFallback: true };
   }
 
-  const omahaListings = ZURI_DATA.listings.filter((listing) => {
-    return listing.city === "Omaha" && listing.category !== "Ask ZURI";
+  const currentListings = ZURI_DATA.listings.filter((listing) => {
+    return listing.city === currentCityName() && listing.category !== "Ask ZURI";
   });
 
-  const exactMatches = omahaListings.filter((listing) => {
+  const exactMatches = currentListings.filter((listing) => {
     const moodMatch = listing.mood.includes(preferences.mood);
     const areaMatch = !preferences.area || listing.area === preferences.area;
     const budgetMatch = listing.priceLevel === preferences.budget;
     return moodMatch && areaMatch && budgetMatch;
   });
 
-  const rankedMatches = [...omahaListings].sort((first, second) => {
+  const rankedMatches = [...currentListings].sort((first, second) => {
     return scoreListing(second, preferences) - scoreListing(first, preferences);
   });
 
@@ -317,12 +349,19 @@ function buildItinerary(preferences) {
 
 function movementNote(transport, area) {
   const areaPhrase = area ? ` near ${area}` : " around the selected stops";
-  const notes = {
-    walking: `This is planned as a tight route${areaPhrase}. If a stop sits outside a comfortable walk, swap in a nearby card or use a short rideshare.`,
-    rideshare: "Use short rideshares between neighborhoods so the plan stays relaxed and weather-proof.",
-    transit: "Check live ORBT or bus timing before you commit; the prototype favors stops that can be connected simply but does not read live schedules.",
-    driving: "Driving gives you the most flexible version of this plan. Build in a few minutes for parking, especially downtown or during events."
-  };
+  const notes = currentCityName() === "Kigali"
+    ? {
+        walking: `This is planned as a tight route${areaPhrase}. Kigali is hilly, so use driver support if a stop sits outside a comfortable walk.`,
+        rideshare: "Use short rideshares or trusted driver support between neighborhoods so the plan stays relaxed and weather-proof.",
+        transit: "Check live local transport options before committing; the prototype does not read Kigali schedules or availability.",
+        driving: "Driving or private driver support gives the most flexible Kigali version. Build in time for hills, traffic, and pickup coordination."
+      }
+    : {
+        walking: `This is planned as a tight route${areaPhrase}. If a stop sits outside a comfortable walk, swap in a nearby card or use a short rideshare.`,
+        rideshare: "Use short rideshares between neighborhoods so the plan stays relaxed and weather-proof.",
+        transit: "Check live ORBT or bus timing before you commit; the prototype favors stops that can be connected simply but does not read live schedules.",
+        driving: "Driving gives you the most flexible version of this plan. Build in a few minutes for parking, especially downtown or during events."
+      };
   return notes[transport] || notes.rideshare;
 }
 
@@ -369,7 +408,7 @@ function renderItinerary(event) {
 
   elements.itineraryOutput.innerHTML = `
     <span class="section-kicker">Your ZURI plan</span>
-    <h3>${preferences.time} in Omaha: ${preferences.mood.toLowerCase()} and easy to follow.</h3>
+    <h3>${preferences.time} in ${currentCityName()}: ${preferences.mood.toLowerCase()} and easy to follow.</h3>
     <ol class="itinerary-list">${stopMarkup}</ol>
     <div class="itinerary-notes">
       <div class="note-box">
@@ -382,7 +421,7 @@ function renderItinerary(event) {
       </div>
       <div class="note-box">
         <strong>Why it fits</strong>
-        <span>ZURI prioritized ${preferences.mood.toLowerCase()} energy, ${preferences.budget} budget fit, and ${preferences.area || "Omaha-wide"} options from the curated prototype set.${noteSentence}</span>
+        <span>ZURI prioritized ${preferences.mood.toLowerCase()} energy, ${preferences.budget} budget fit, and ${preferences.area || `${currentCityName()}-wide`} options from the curated prototype set.${noteSentence}</span>
       </div>
       <div class="note-box">
         <strong>Live concierge disclaimer</strong>
@@ -394,7 +433,10 @@ function renderItinerary(event) {
 
 function bindEvents() {
   if (elements.cityFilter) elements.cityFilter.addEventListener("change", (event) => {
-    state.city = event.target.value || "Omaha";
+    state.city = event.target.value || document.body.dataset.city || "Omaha";
+    state.area = "";
+    if (elements.areaFilter) addOptions(elements.areaFilter, areasForCity(), "All areas");
+    if (elements.plannerArea) addOptions(elements.plannerArea, areasForCity(), "Any area");
     renderListings();
   });
 
@@ -453,12 +495,12 @@ function init() {
   }
 
   const activeCities = ZURI_DATA.cities.filter((city) => city.isActive);
-  addOptions(elements.cityFilter, activeCities, "Choose a city", "Omaha");
-  addOptions(elements.areaFilter, ZURI_DATA.areas, "All areas");
+  addOptions(elements.cityFilter, activeCities, "Choose a city", currentCityName());
+  addOptions(elements.areaFilter, areasForCity(), "All areas");
   addOptions(elements.categoryFilter, ZURI_DATA.categories, "All categories");
   addOptions(elements.moodFilter, ZURI_DATA.moods, "All moods");
   addOptions(elements.plannerMood, ZURI_DATA.moods, "Choose a mood", "Easy");
-  addOptions(elements.plannerArea, ZURI_DATA.areas, "Any area");
+  addOptions(elements.plannerArea, areasForCity(), "Any area");
   renderListings();
 }
 

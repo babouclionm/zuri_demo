@@ -3,15 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ZURI | Kigali Coming Soon</title>
-    <meta name="description" content="Kigali is the next ZURI expansion path.">
+    <title>ZURI | Kigali City Experience Prototype</title>
+    <meta name="description" content="ZURI makes Kigali easier to experience with curated local recommendations and concierge-style guidance.">
     <link rel="stylesheet" href="../styles.css">
   </head>
-  <body>
+  <body data-city="Kigali">
     <header class="site-header">
       <a class="brand" href="../index.html" aria-label="ZURI home">
         <span class="brand-mark">Z</span>
-        <span><strong>ZURI</strong><small>Kigali path</small></span>
+        <span>
+          <strong>ZURI</strong>
+          <small>Kigali beta</small>
+        </span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="../index.html">Home</a>
@@ -22,22 +25,231 @@
       </nav>
     </header>
 
-    <main>
-      <section class="path-page kigali-coming-page" aria-labelledby="kigali-title">
-        <p class="eyebrow">Rwanda expansion path</p>
-        <h1 id="kigali-title">Kigali is next.</h1>
-        <p class="hero-text">ZURI will expand to Rwanda after Omaha validation, with curated city guidance, trusted local partners, transportation help, experiences, stays, and concierge support.</p>
-        <div class="placeholder-chips" aria-label="Kigali coming soon categories">
-          <span>Food</span>
-          <span>Culture</span>
-          <span>Tours</span>
-          <span>Transportation</span>
-          <span>Hotels</span>
-          <span>Wellness</span>
+    <main id="top">
+      <section class="hero city-hero kigali-hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Kigali prototype market</p>
+          <h1 id="hero-title">The easiest way to experience Kigali.</h1>
+          <p class="hero-text">Discover where to go, what to do, and how to move through Kigali with curated local recommendations and concierge-style guidance.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#explore">Explore Kigali</a>
+            <a class="button secondary" href="#ask">Ask ZURI</a>
+          </div>
         </div>
-        <a class="button secondary" href="../guest.html">Back to guest path</a>
+        <div class="hero-media" aria-label="Kigali city experience preview">
+          <div class="media-panel main-photo kigali-photo"></div>
+          <div class="media-panel hero-itinerary">
+            <span>Prototype city</span>
+            <strong>Food, culture, movement</strong>
+            <p>Curated into a simple Kigali plan.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="explore" class="city-section" aria-labelledby="explore-title">
+        <div class="city-intro">
+          <div>
+            <span class="section-kicker">Kigali is active</span>
+            <h2 id="explore-title">Experience the best of Kigali.</h2>
+            <p>Start with a category, area, mood, or search. ZURI organizes Kigali food, coffee, culture, tours, stays, transport, shopping, wellness, and nightlife into practical next steps.</p>
+          </div>
+          <aside class="concierge-card mini-concierge" aria-label="Meet your ZURI concierge">
+            <span class="section-kicker">Human-backed guidance</span>
+            <h3>Meet your ZURI concierge</h3>
+            <p>A warmer layer for deciding what fits your time, budget, transport, and comfort level in Kigali.</p>
+            <a class="button primary" href="#ask">Chat with ZURI</a>
+          </aside>
+        </div>
+
+        <div class="category-panel" aria-label="Kigali categories">
+          <div class="panel-heading">
+            <h3>Choose a category</h3>
+            <p>Country → City → Category → Experience</p>
+          </div>
+          <div id="category-chips" class="category-chips"></div>
+        </div>
+
+        <div class="experience-controls">
+          <div class="section-heading controls-heading">
+            <div>
+              <span class="section-kicker">Curated experiences</span>
+              <h3>Browse Kigali</h3>
+            </div>
+            <p id="result-count" class="result-count" aria-live="polite">0 results</p>
+          </div>
+
+          <form class="filters" aria-label="Discovery filters">
+            <label>
+              <span>City</span>
+              <select id="city-filter"></select>
+            </label>
+            <label>
+              <span>Area</span>
+              <select id="area-filter"></select>
+            </label>
+            <label>
+              <span>Category</span>
+              <select id="category-filter"></select>
+            </label>
+            <label>
+              <span>Mood</span>
+              <select id="mood-filter"></select>
+            </label>
+            <label class="search-label">
+              <span>Search</span>
+              <input id="search-input" type="search" placeholder="Try coffee, culture, driver, market">
+            </label>
+            <button class="button ghost" type="button" id="clear-filters">Clear filters</button>
+          </form>
+
+          <div id="active-filters" class="active-filters" aria-live="polite"></div>
+          <div id="listing-grid" class="listing-grid"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <h3>No exact match yet.</h3>
+            <p>Ask ZURI for a custom Kigali plan and it will use the closest prototype matches instead of leaving you stuck.</p>
+            <a class="button primary" href="#ask">Ask ZURI</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="ask" class="planner-section" aria-labelledby="ask-title">
+        <div class="concierge-hero">
+          <div>
+            <span class="section-kicker">Concierge layer</span>
+            <h2 id="ask-title">Meet your ZURI concierge.</h2>
+            <p>Tell ZURI what kind of Kigali day you want. The prototype will assemble a practical 3-stop plan from the curated Kigali experience set.</p>
+          </div>
+          <a class="button primary" href="#planner-form">Plan my stay</a>
+        </div>
+
+        <div class="planner-layout">
+          <form id="planner-form" class="planner-form">
+            <label>
+              <span>Mood</span>
+              <select id="planner-mood" required></select>
+            </label>
+            <label>
+              <span>Budget</span>
+              <select id="planner-budget" required>
+                <option value="$">Keep it light</option>
+                <option value="$$" selected>Comfortable</option>
+                <option value="$$$">Treat it up</option>
+              </select>
+            </label>
+            <label>
+              <span>Time</span>
+              <select id="planner-time" required>
+                <option value="2 hours">2 hours</option>
+                <option value="Half day" selected>Half day</option>
+                <option value="Full day">Full day</option>
+                <option value="Tonight">Tonight</option>
+              </select>
+            </label>
+            <label>
+              <span>Transport</span>
+              <select id="planner-transport" required>
+                <option value="walking">Walking</option>
+                <option value="rideshare" selected>Rideshare</option>
+                <option value="transit">Transit</option>
+                <option value="driving">Driving</option>
+              </select>
+            </label>
+            <label>
+              <span>Area</span>
+              <select id="planner-area"></select>
+            </label>
+            <label class="planner-note">
+              <span>Optional note</span>
+              <textarea id="planner-note" rows="4" placeholder="Example: first day in Kigali, avoid too much walking, need driver support"></textarea>
+            </label>
+            <button class="button primary" type="submit">Create my plan</button>
+          </form>
+
+          <article id="itinerary-output" class="itinerary-output" aria-live="polite">
+            <span class="section-kicker">Ready when you are</span>
+            <h3>Your Kigali plan will appear here.</h3>
+            <p>Choose a mood, budget, time window, transport style, and area. ZURI will return three stops with a movement note, budget note, and fit rationale.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="trust-section" aria-labelledby="trust-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">Prototype trust layer</span>
+            <h2 id="trust-title">Built for guidance before booking.</h2>
+          </div>
+          <p>Kigali is active as a static prototype city. Real-world booking, availability, partner verification, and live concierge checks would come later.</p>
+        </div>
+        <div class="trust-grid">
+          <article>
+            <h3>Curated local experiences</h3>
+            <p>Recommendations are organized around city context, not endless search results.</p>
+          </article>
+          <article>
+            <h3>Verified partners</h3>
+            <p>Future Kigali partners would need review before any live recommendation or booking path.</p>
+          </article>
+          <article>
+            <h3>Concierge-style support</h3>
+            <p>ZURI explains why a Kigali plan fits and where live verification would improve it.</p>
+          </article>
+          <article>
+            <h3>Simple request flow</h3>
+            <p>Future request paths should make transport, experiences, stays, and local help easier to coordinate.</p>
+          </article>
+        </div>
       </section>
     </main>
+
+    <aside id="detail-panel" class="detail-panel" aria-hidden="true" aria-labelledby="detail-title">
+      <div class="detail-scrim" data-close-detail></div>
+      <article class="detail-card" role="dialog" aria-modal="true">
+        <button class="icon-button" type="button" data-close-detail aria-label="Close detail panel">x</button>
+        <p id="detail-meta" class="detail-meta"></p>
+        <h2 id="detail-title"></h2>
+        <p id="detail-description" class="detail-description"></p>
+        <dl class="detail-facts">
+          <div>
+            <dt>Best for</dt>
+            <dd id="detail-best-for"></dd>
+          </div>
+          <div>
+            <dt>Duration</dt>
+            <dd id="detail-duration"></dd>
+          </div>
+          <div>
+            <dt>Price</dt>
+            <dd id="detail-price"></dd>
+          </div>
+          <div>
+            <dt>Trust signal</dt>
+            <dd id="detail-trust"></dd>
+          </div>
+        </dl>
+        <div id="detail-tags" class="tag-row"></div>
+        <div class="why-box">
+          <h3>Why ZURI recommends it</h3>
+          <p id="detail-why"></p>
+        </div>
+        <a class="button primary" href="#ask" data-close-detail id="detail-cta">Ask ZURI</a>
+      </article>
+    </aside>
+
+    <footer class="site-footer">
+      <div>
+        <strong>ZURI</strong>
+        <span>ZURI makes cities easier to experience.</span>
+      </div>
+      <nav aria-label="Footer navigation">
+        <a href="../guest.html">Explore</a>
+        <a href="#ask">Ask ZURI</a>
+        <a href="../partners.html">Partners</a>
+        <a href="omaha.html">Omaha</a>
+      </nav>
+    </footer>
+
+    <script src="../data.js?v=city2"></script>
+    <script src="../script.js?v=city2"></script>
   </body>
 </html>
-

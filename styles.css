@@ -252,6 +252,22 @@ main {
   background-size: cover;
 }
 
+.lincoln-photo {
+  background:
+    linear-gradient(135deg, rgba(31, 37, 35, 0.04), rgba(31, 37, 35, 0.2)),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_of_Downtown_Lincoln,_Nebraska,_USA_(2024).jpg?width=1280");
+  background-position: center;
+  background-size: cover;
+}
+
+.rwamagana-photo {
+  background:
+    linear-gradient(135deg, rgba(31, 37, 35, 0.04), rgba(31, 37, 35, 0.2)),
+    url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake_muhazi.jpg?width=1280");
+  background-position: center;
+  background-size: cover;
+}
+
 .hero-itinerary {
   position: absolute;
   right: 14px;

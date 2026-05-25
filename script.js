@@ -349,26 +349,39 @@ function buildItinerary(preferences) {
 
 function movementNote(transport, area) {
   const areaPhrase = area ? ` near ${area}` : " around the selected stops";
-  const notes = currentCityName() === "Kigali"
-    ? {
-        walking: `This is planned as a tight route${areaPhrase}. Kigali is hilly, so use driver support if a stop sits outside a comfortable walk.`,
-        rideshare: "Use short rideshares or trusted driver support between neighborhoods so the plan stays relaxed and weather-proof.",
-        transit: "Check live local transport options before committing; the prototype does not read Kigali schedules or availability.",
-        driving: "Driving or private driver support gives the most flexible Kigali version. Build in time for hills, traffic, and pickup coordination."
-      }
-    : {
-        walking: `This is planned as a tight route${areaPhrase}. If a stop sits outside a comfortable walk, swap in a nearby card or use a short rideshare.`,
-        rideshare: "Use short rideshares between neighborhoods so the plan stays relaxed and weather-proof.",
-        transit: "Check live ORBT or bus timing before you commit; the prototype favors stops that can be connected simply but does not read live schedules.",
-        driving: "Driving gives you the most flexible version of this plan. Build in a few minutes for parking, especially downtown or during events."
-      };
+  const city = currentCityName();
+  const rwandaCities = ["Kigali", "Rwamagana"];
+  const notes = {
+    walking: `This is planned as a tight route${areaPhrase}. If a stop sits outside a comfortable walk, swap in a nearby card or use a short ride.`,
+    rideshare: "Use short rides or trusted driver support between neighborhoods so the plan stays relaxed and weather-proof.",
+    transit: "Check live local transit or shared transport options before committing; the prototype does not read schedules or availability.",
+    driving: "Driving gives you the most flexible version of this plan. Build in a few minutes for parking, pickup coordination, and event traffic."
+  };
+
+  if (city === "Omaha") {
+    notes.transit = "Check live ORBT or bus timing before you commit; the prototype favors stops that can be connected simply but does not read live schedules.";
+  }
+
+  if (city === "Lincoln") {
+    notes.rideshare = "Use short rideshares between Haymarket, downtown, campus, and outdoor stops so the plan stays relaxed and weather-proof.";
+    notes.transit = "Check live Lincoln transit timing before you commit; the prototype does not read bus schedules or event detours.";
+    notes.driving = "Driving gives you the most flexible Lincoln version. Build in a few minutes for parking near downtown, campus, or event areas.";
+  }
+
+  if (rwandaCities.includes(city)) {
+    notes.walking = `This is planned as a tight route${areaPhrase}. ${city} can involve hills, heat, or spread-out stops, so use trusted driver support when needed.`;
+    notes.rideshare = "Use short rides or trusted driver support between areas so the plan stays relaxed and weather-proof.";
+    notes.transit = `Check live local transport options before committing; the prototype does not read ${city} schedules or availability.`;
+    notes.driving = `Driving or private driver support gives the most flexible ${city} version. Build in time for roads, traffic, and pickup coordination.`;
+  }
+
   return notes[transport] || notes.rideshare;
 }
 
 function budgetNote(budget, usedFallback) {
   const labels = {
     "$": "This keeps the day light: free or lower-cost anchors first, with spending mostly on food, coffee, or transit.",
-    "$$": "This is a comfortable Omaha plan: expect a mix of casual paid stops and flexible food or drink spending.",
+    "$$": `This is a comfortable ${currentCityName()} plan: expect a mix of casual paid stops and flexible food or drink spending.`,
     "$$$": "This leans premium: reservations, tickets, wellness, hotel, or polished dinner stops may raise the total."
   };
   const fallback = usedFallback ? " A few picks are close matches because the exact filter set had fewer than three options." : "";

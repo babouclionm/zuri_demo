@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ZURI | Partners</title>
+    <meta name="description" content="Partner with ZURI to help guests experience the city better.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="ZURI home">
+        <span class="brand-mark">Z</span>
+        <span><strong>ZURI</strong><small>Partner path</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="guest.html">Guest</a>
+        <a href="cities/omaha.html">Omaha</a>
+        <a href="cities/kigali.html">Kigali</a>
+        <a href="partners.html">Partners</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="partners-page" aria-labelledby="partners-title">
+        <div class="partners-copy">
+          <p class="eyebrow">Partner ecosystem</p>
+          <h1 id="partners-title">Help guests experience the city better.</h1>
+          <p class="hero-text">Hotels, Airbnb hosts, vendors, drivers, restaurants, tour guides, and wellness providers can partner with ZURI to reach travelers at the moment they are deciding what to do next.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#partner-intake">Become a partner</a>
+            <a class="button secondary" href="#partner-intake">List your service</a>
+          </div>
+        </div>
+
+        <form id="partner-form" class="partner-form" aria-label="Partner intake form" novalidate>
+          <h2 id="partner-intake">Prototype partner intake</h2>
+          <p>This form is front-end only for prototype review. It does not submit to a backend.</p>
+          <label>
+            <span>Business/partner name</span>
+            <input id="partner-name" name="partner-name">
+          </label>
+          <label>
+            <span>Partner type</span>
+            <select name="partner-type">
+              <option value="">Choose type</option>
+              <option>Hotel</option>
+              <option>Airbnb host</option>
+              <option>Vendor</option>
+              <option>Driver</option>
+              <option>Restaurant</option>
+              <option>Tour guide</option>
+              <option>Wellness provider</option>
+            </select>
+          </label>
+          <label>
+            <span>Country</span>
+            <input name="country">
+          </label>
+          <label>
+            <span>City/location</span>
+            <input name="city-location">
+          </label>
+          <label>
+            <span>Service category</span>
+            <input name="service-category">
+          </label>
+          <label class="planner-note">
+            <span>Short description</span>
+            <textarea name="description" rows="4"></textarea>
+          </label>
+          <label>
+            <span>Contact email/phone</span>
+            <input name="contact">
+          </label>
+          <button class="button primary" type="submit">Submit prototype intake</button>
+          <p id="partner-success" class="form-success" hidden>Thanks. This prototype captured your partner interest on the page only; no real submission was sent.</p>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js?v=pages"></script>
+  </body>
+</html>

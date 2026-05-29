@@ -3,105 +3,61 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ZURI | City Experience Gateway</title>
-    <meta name="description" content="ZURI connects guests to curated local experiences, trusted partners, and concierge-style guidance.">
+    <title>ZURI | Choose Your Market</title>
+    <meta name="description" content="Choose your ZURI market for curated local experiences, trusted partners, and concierge-style city guidance.">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header market-header">
       <a class="brand" href="index.html" aria-label="ZURI home">
         <span class="brand-mark">Z</span>
         <span>
           <strong>ZURI</strong>
-          <small>City gateway</small>
+          <small>Global market gateway</small>
         </span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="guest.html">Guest</a>
-        <a href="cities/omaha.html">Omaha</a>
-        <a href="cities/kigali.html">Kigali</a>
-        <a href="partners.html">Partners</a>
+        <a class="partner-nav-cta" href="partners.html#partner-intake">
+          <span>Become a ZURI Partner</span>
+          <span aria-hidden="true">→</span>
+        </a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="gateway-hero" aria-labelledby="gateway-title">
-        <div class="gateway-copy">
-          <p class="eyebrow">Choose your ZURI path</p>
-          <h1 id="gateway-title">The easiest way to experience a city.</h1>
-          <p class="hero-text">ZURI connects guests to curated local experiences, trusted partners, and concierge-style guidance.</p>
+      <section class="market-gateway" aria-labelledby="market-title">
+        <div class="market-copy">
+          <p class="eyebrow">Country-first city guidance</p>
+          <h1 id="market-title">Choose your ZURI market.</h1>
+          <p class="hero-text">Local experiences, trusted partners, and concierge-style city guidance — built around the country you are exploring.</p>
         </div>
-        <div class="gateway-grid" aria-label="ZURI gateway choices">
-          <a class="gateway-card guest-card" href="guest.html">
-            <span class="destination-status">Guest path</span>
-            <h2>I&rsquo;m a Guest</h2>
-            <strong>Start exploring</strong>
+
+        <div class="market-card-grid" aria-label="Choose a ZURI market">
+          <a class="market-card rwanda-market" href="countries/rwanda.html">
+            <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake_muhazi.jpg?width=1200" alt="Lake Muhazi landscape in Rwanda with calm water and green hills">
+            <span class="market-card-overlay">
+              <span class="destination-status">Active market</span>
+              <span class="market-card-title">Rwanda</span>
+              <span class="market-card-copy">Culture, movement, hospitality, and curated local experiences.</span>
+              <span class="market-card-cities">Kigali · Rwamagana · More coming soon</span>
+              <span class="button primary">Enter ZURI Rwanda</span>
+            </span>
           </a>
-          <a class="gateway-card partner-card" href="partners.html">
-            <span class="destination-status">Partner path</span>
-            <h2>I&rsquo;m a ZURI Partner</h2>
-            <strong>Partner with ZURI</strong>
+
+          <a class="market-card us-market" href="countries/us.html">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Omaha_skyline_2010.jpg/1280px-Omaha_skyline_2010.jpg" alt="Omaha skyline representing ZURI United States city discovery">
+            <span class="market-card-overlay">
+              <span class="destination-status">Active market</span>
+              <span class="market-card-title">United States</span>
+              <span class="market-card-copy">City discovery, local plans, food, events, and neighborhood experiences.</span>
+              <span class="market-card-cities">Omaha · Lincoln · More coming soon</span>
+              <span class="button primary">Enter ZURI US</span>
+            </span>
           </a>
         </div>
-        <a class="text-cta" href="partners.html">List your service</a>
-      </section>
 
-      <section class="vibe-section" aria-labelledby="vibe-title">
-        <div class="section-heading compact-heading">
-          <div>
-            <span class="section-kicker">Guest energy</span>
-            <h2 id="vibe-title">Trips should feel easy before they begin.</h2>
-          </div>
-          <p>Prototype reviews from the ZURI world: travelers want clear plans, and local partners want guests who arrive with confidence.</p>
-        </div>
-
-        <div class="vibe-gallery" aria-label="Vacation moments">
-          <figure class="vibe-photo large">
-            <img src="https://images.pexels.com/photos/10680320/pexels-photo-10680320.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Friends smiling together on a tropical beach">
-            <figcaption>Friend trips, easier plans.</figcaption>
-          </figure>
-          <figure class="vibe-photo">
-            <img src="https://images.pexels.com/photos/7818291/pexels-photo-7818291.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Smiling travelers standing by palm trees on vacation">
-            <figcaption>Local days, good energy.</figcaption>
-          </figure>
-          <figure class="vibe-photo">
-            <img src="https://images.pexels.com/photos/19164155/pexels-photo-19164155.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Group of travelers posing on a beach near the water">
-            <figcaption>One city, less guessing.</figcaption>
-          </figure>
-        </div>
-
-        <div class="review-grid" aria-label="Prototype reviews">
-          <article class="review-card">
-            <span>Guest review</span>
-            <p>&ldquo;ZURI made the day feel planned without making it feel scheduled. We knew where to start, where to eat, and how to move.&rdquo;</p>
-            <strong>Maya, weekend traveler</strong>
-          </article>
-          <article class="review-card">
-            <span>Partner review</span>
-            <p>&ldquo;Guests ask better questions when they already understand the city. ZURI feels like a warm handoff before they arrive.&rdquo;</p>
-            <strong>Andre, boutique stay host</strong>
-          </article>
-          <article class="review-card">
-            <span>Guest review</span>
-            <p>&ldquo;It gave our group a confident first plan, then left room for us to wander. That balance is exactly what travel needs.&rdquo;</p>
-            <strong>Noah, first-time visitor</strong>
-          </article>
-        </div>
+        <p class="market-trust-line">Choose a market first. ZURI will guide the rest.</p>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div>
-        <strong>ZURI</strong>
-        <span>ZURI makes cities easier to experience.</span>
-      </div>
-      <nav aria-label="Footer navigation">
-        <a href="guest.html">Explore</a>
-        <a href="cities/omaha.html#ask">Ask ZURI</a>
-        <a href="partners.html">Partners</a>
-        <a href="cities/kigali.html">Kigali</a>
-      </nav>
-    </footer>
   </body>
 </html>

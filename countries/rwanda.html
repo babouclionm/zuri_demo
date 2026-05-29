@@ -3,44 +3,92 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ZURI | Rwanda</title>
-    <meta name="description" content="Explore ZURI prototype destinations in Rwanda.">
+    <title>ZURI | Rwanda Market</title>
+    <meta name="description" content="Explore ZURI Rwanda with curated local experiences, movement, hospitality, and concierge-style support.">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="../index.html" aria-label="ZURI home">
         <span class="brand-mark">Z</span>
-        <span><strong>ZURI</strong><small>Rwanda path</small></span>
+        <span><strong>ZURI</strong><small>Rwanda market</small></span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="../index.html">Home</a>
-        <a href="../guest.html">Guest</a>
-        <a href="../cities/omaha.html">Omaha</a>
-        <a href="../cities/kigali.html">Kigali</a>
-        <a href="../partners.html">Partners</a>
+        <a href="#guest-path">Guest</a>
+        <a href="../partners.html#partner-intake">Partners</a>
       </nav>
     </header>
 
     <main>
-      <section class="path-page" aria-labelledby="rwanda-title">
-        <p class="eyebrow">Guest → Rwanda → City</p>
-        <h1 id="rwanda-title">Rwanda</h1>
-        <p class="hero-text">Kigali and Rwamagana are active as ZURI prototype cities with curated local recommendations and Ask ZURI planning. Real booking, availability, and partner verification are not live yet.</p>
+      <section class="country-hero rwanda-country" aria-labelledby="rwanda-title">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake_muhazi.jpg?width=1400" alt="Lake Muhazi and green hills in Rwanda">
+        <div class="country-hero-overlay">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">ZURI</a>
+            <span>/</span>
+            <span>Rwanda</span>
+          </nav>
+          <p class="eyebrow">ZURI Rwanda</p>
+          <h1 id="rwanda-title">Welcome to ZURI Rwanda.</h1>
+          <p class="hero-text">Explore trusted local experiences, movement, hospitality, and concierge-style support across Rwanda.</p>
+        </div>
+      </section>
+
+      <section class="country-choice-section" aria-labelledby="rwanda-choice-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">Choose your Rwanda path</span>
+            <h2 id="rwanda-choice-title">Guest discovery or partner network.</h2>
+          </div>
+          <p>Start inside the Rwanda market, then choose how ZURI should help.</p>
+        </div>
+
+        <div class="choice-card-grid">
+          <article class="choice-card">
+            <span class="destination-status">Guest</span>
+            <h3>I&rsquo;m a Guest</h3>
+            <p>Find cities, experiences, food, movement, and Ask ZURI planning support.</p>
+            <a class="button primary" href="#guest-path">Explore Rwanda as a Guest</a>
+          </article>
+          <article class="choice-card partner-choice">
+            <span class="destination-status">Partner</span>
+            <h3>I&rsquo;m a ZURI Partner</h3>
+            <p>Join the Rwanda partner network and earn from traveler demand.</p>
+            <a class="button primary" href="../partners.html#partner-intake">Become a Rwanda Partner</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="guest-path" class="country-city-section" aria-labelledby="rwanda-city-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">Rwanda cities</span>
+            <h2 id="rwanda-city-title">Choose where you are going.</h2>
+          </div>
+          <p>Kigali and Rwamagana are active prototype city experiences. More Rwanda markets can fit this structure later.</p>
+        </div>
+
         <div class="destination-grid path-grid">
           <article class="destination-card active-destination">
             <div class="destination-status">Active prototype</div>
-            <h2>Kigali</h2>
+            <h3>Kigali</h3>
             <p>Browse Kigali food, coffee, culture, tours, shopping, wellness, stays, transport, and nightlife ideas.</p>
             <div class="pathway"><span>Rwanda</span><span>Kigali</span><span>Category</span><span>Experience</span></div>
             <a class="button primary" href="../cities/kigali.html">Explore Kigali</a>
           </article>
           <article class="destination-card active-destination">
             <div class="destination-status">Active prototype</div>
-            <h2>Rwamagana</h2>
-            <p>Plan Eastern Province calm, Lake Muhazi movement, town routes, local markets, wellness, food, and Akagera gateway support.</p>
+            <h3>Rwamagana</h3>
+            <p>Plan Eastern Province calm, Lake Muhazi movement, town routes, markets, wellness, food, and Akagera gateway support.</p>
             <div class="pathway"><span>Rwanda</span><span>Rwamagana</span><span>Category</span><span>Experience</span></div>
             <a class="button primary" href="../cities/rwamagana.html">Explore Rwamagana</a>
+          </article>
+          <article class="destination-card muted-destination">
+            <div class="destination-status">Future</div>
+            <h3>More Rwanda cities coming soon</h3>
+            <p>ZURI can expand into additional Rwanda markets after the active prototype paths are validated.</p>
+            <div class="pathway"><span>Rwanda</span><span>Future city</span><span>Coming soon</span></div>
           </article>
         </div>
       </section>

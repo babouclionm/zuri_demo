@@ -3,44 +3,92 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ZURI | United States</title>
-    <meta name="description" content="Explore ZURI destinations in the United States.">
+    <title>ZURI | United States Market</title>
+    <meta name="description" content="Explore ZURI United States city discovery, local plans, food, events, and trusted partner experiences.">
     <link rel="stylesheet" href="../styles.css">
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="../index.html" aria-label="ZURI home">
         <span class="brand-mark">Z</span>
-        <span><strong>ZURI</strong><small>United States</small></span>
+        <span><strong>ZURI</strong><small>United States market</small></span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="../index.html">Home</a>
-        <a href="../guest.html">Guest</a>
-        <a href="../cities/omaha.html">Omaha</a>
-        <a href="../cities/kigali.html">Kigali</a>
-        <a href="../partners.html">Partners</a>
+        <a href="#guest-path">Guest</a>
+        <a href="../partners.html#partner-intake">Partners</a>
       </nav>
     </header>
 
     <main>
-      <section class="path-page" aria-labelledby="us-title">
-        <p class="eyebrow">Guest → United States → City</p>
-        <h1 id="us-title">United States</h1>
-        <p class="hero-text">Omaha and Lincoln are active ZURI prototype markets with curated experiences, filters, and concierge-style planning.</p>
+      <section class="country-hero us-country" aria-labelledby="us-title">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Omaha_skyline_2010.jpg/1280px-Omaha_skyline_2010.jpg" alt="Omaha skyline representing United States city discovery">
+        <div class="country-hero-overlay">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="../index.html">ZURI</a>
+            <span>/</span>
+            <span>United States</span>
+          </nav>
+          <p class="eyebrow">ZURI United States</p>
+          <h1 id="us-title">Welcome to ZURI United States.</h1>
+          <p class="hero-text">Explore city discovery, local plans, food, events, and trusted partner experiences.</p>
+        </div>
+      </section>
+
+      <section class="country-choice-section" aria-labelledby="us-choice-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">Choose your US path</span>
+            <h2 id="us-choice-title">Guest discovery or partner network.</h2>
+          </div>
+          <p>Start inside the United States market, then choose the city path or partner path that fits.</p>
+        </div>
+
+        <div class="choice-card-grid">
+          <article class="choice-card">
+            <span class="destination-status">Guest</span>
+            <h3>I&rsquo;m a Guest</h3>
+            <p>Choose a city and discover local experiences that fit your mood, time, area, and budget.</p>
+            <a class="button primary" href="#guest-path">Explore US cities</a>
+          </article>
+          <article class="choice-card partner-choice">
+            <span class="destination-status">Partner</span>
+            <h3>I&rsquo;m a ZURI Partner</h3>
+            <p>Join the US partner network and reach people looking for trusted local experiences.</p>
+            <a class="button primary" href="../partners.html#partner-intake">Become a US Partner</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="guest-path" class="country-city-section" aria-labelledby="us-city-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">United States cities</span>
+            <h2 id="us-city-title">Choose where you are going.</h2>
+          </div>
+          <p>Omaha and Lincoln are active prototype city experiences. More US city markets can fit this structure later.</p>
+        </div>
+
         <div class="destination-grid path-grid">
           <article class="destination-card active-destination">
             <div class="destination-status">Active proof market</div>
-            <h2>Omaha</h2>
+            <h3>Omaha</h3>
             <p>Choose categories like food, coffee, culture, outdoor/nature, date night, hotels, wellness, and more.</p>
             <div class="pathway"><span>United States</span><span>Omaha</span><span>Category</span><span>Experience</span></div>
             <a class="button primary" href="../cities/omaha.html">Explore Omaha</a>
           </article>
           <article class="destination-card active-destination">
             <div class="destination-status">Active prototype</div>
-            <h2>Lincoln</h2>
+            <h3>Lincoln</h3>
             <p>Browse college-town energy, Haymarket days, campus routes, local food, arts, history, and easy outdoor plans.</p>
             <div class="pathway"><span>United States</span><span>Lincoln</span><span>Category</span><span>Experience</span></div>
             <a class="button primary" href="../cities/lincoln.html">Explore Lincoln</a>
+          </article>
+          <article class="destination-card muted-destination">
+            <div class="destination-status">Future</div>
+            <h3>More US cities coming soon</h3>
+            <p>ZURI can expand into additional US markets after the active prototype paths are validated.</p>
+            <div class="pathway"><span>United States</span><span>Future city</span><span>Coming soon</span></div>
           </article>
         </div>
       </section>

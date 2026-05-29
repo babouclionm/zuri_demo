@@ -57,6 +57,61 @@ const experienceCategories = [
   "Date Night"
 ];
 
+const categoryImages = {
+  Food: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+  Coffee: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80",
+  Nightlife: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80",
+  Culture: "https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=900&q=80",
+  Tours: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+  "Outdoor/Nature": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80",
+  Shopping: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80",
+  Hotels: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80",
+  Transportation: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80",
+  Wellness: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80",
+  Events: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=80",
+  "Family Friendly": "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=900&q=80",
+  "Date Night": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+  "Ask ZURI": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+};
+
+const cityImages = {
+  Omaha: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Omaha_skyline_2010.jpg/960px-Omaha_skyline_2010.jpg",
+  Lincoln: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Skyline_of_Downtown_Lincoln,_Nebraska,_USA_(2024).jpg?width=900",
+  Kigali: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Kigali_skyline.jpg/900px-Kigali_skyline.jpg",
+  Rwamagana: "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake_muhazi.jpg?width=900"
+};
+
+const locationOverrides = {
+  "old-market-walk": { label: "Old Market, Omaha", query: "Old Market Omaha NE" },
+  "block-16-lunch": { label: "Block 16, Omaha", query: "Block 16 Omaha NE" },
+  "archetype-blackstone": { label: "Archetype Coffee Blackstone, Omaha", query: "Archetype Coffee Blackstone Omaha NE" },
+  "mula-blackstone": { label: "Mula Mexican Kitchen & Tequileria, Omaha", query: "Mula Omaha Blackstone NE" },
+  "benson-night-out": { label: "Benson Creative District, Omaha", query: "Benson Creative District Omaha NE" },
+  "joslyn-arts": { label: "Joslyn Art Museum, Omaha", query: "Joslyn Art Museum Omaha NE" },
+  "durham-museum": { label: "The Durham Museum, Omaha", query: "The Durham Museum Omaha NE" },
+  "gene-leahy-mall": { label: "Gene Leahy Mall, Omaha", query: "Gene Leahy Mall Omaha NE" },
+  "lauritzen-gardens": { label: "Lauritzen Gardens, Omaha", query: "Lauritzen Gardens Omaha NE" },
+  "hollywood-candy": { label: "Hollywood Candy, Omaha", query: "Hollywood Candy Omaha NE" },
+  "fontenelle-forest": { label: "Fontenelle Forest, Bellevue", query: "Fontenelle Forest Bellevue NE" },
+  "salt-and-spa": { label: "Midtown Omaha wellness area", query: "Midtown Omaha wellness spa" },
+  "kimpton-cottonwood": { label: "Kimpton Cottonwood Hotel, Omaha", query: "Kimpton Cottonwood Hotel Omaha NE" },
+  "orbt-downtown": { label: "ORBT Downtown Omaha stop area", query: "ORBT Downtown Omaha NE" },
+  "steelhouse-show": { label: "Steelhouse Omaha", query: "Steelhouse Omaha NE" },
+  "zoo-family-day": { label: "Omaha Henry Doorly Zoo and Aquarium", query: "Omaha Henry Doorly Zoo and Aquarium" },
+  "via-farinas-date": { label: "Via Farina, Omaha", query: "Via Farina Omaha NE" },
+  "inner-rail-aksarben": { label: "Inner Rail Food Hall, Omaha", query: "Inner Rail Food Hall Omaha NE" },
+  "dundee-shopping": { label: "Dundee neighborhood, Omaha", query: "Dundee Omaha NE" },
+  "ask-zuri-custom": { label: "Downtown Omaha", query: "Downtown Omaha NE" },
+  "kigali-city-first-timer": { label: "Kigali city center", query: "Kigali city center Rwanda" },
+  "kimironko-market-browse": { label: "Kimironko Market, Kigali", query: "Kimironko Market Kigali Rwanda" },
+  "kigali-genocide-memorial": { label: "Kigali Genocide Memorial", query: "Kigali Genocide Memorial Rwanda" },
+  "nyamirambo-walk": { label: "Nyamirambo, Kigali", query: "Nyamirambo Kigali Rwanda" },
+  "question-coffee-stop": { label: "Question Coffee, Kigali", query: "Question Coffee Kigali Rwanda" },
+  "inema-arts-center": { label: "Inema Arts Center, Kigali", query: "Inema Arts Center Kigali Rwanda" },
+  "lake-muhazi-easy-day-plan": { label: "Lake Muhazi, Rwanda", query: "Lake Muhazi Rwanda" },
+  "akagera-gateway-transport-support": { label: "Akagera National Park gateway route", query: "Akagera National Park Rwanda" }
+};
+
 function currentCityName() {
   return state.city || document.body.dataset.city || "Omaha";
 }
@@ -87,6 +142,27 @@ function areasForCity(city = currentCityName()) {
   )].sort();
 }
 
+function getListingImage(listing) {
+  return listing.imageUrl || categoryImages[listing.category] || cityImages[listing.city] || categoryImages.Tours;
+}
+
+function getLocationInfo(listing) {
+  const override = locationOverrides[listing.id];
+  const label = override?.label || `${listing.area}, ${listing.city}`;
+  const query = override?.query || `${listing.title} ${listing.area} ${listing.city} ${listing.country}`;
+  const encodedQuery = encodeURIComponent(query);
+
+  return {
+    label,
+    googleUrl: `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`,
+    appleUrl: `https://maps.apple.com/?q=${encodedQuery}`
+  };
+}
+
+function openMap(event) {
+  event.stopPropagation();
+}
+
 function addOptions(select, options, placeholder, selectedValue = "") {
   if (!select) {
     return;
@@ -115,6 +191,7 @@ function listingMatches(listing) {
     listing.title,
     listing.area,
     listing.category,
+    getLocationInfo(listing).label,
     listing.shortDescription,
     listing.longDescription,
     ...listing.tags
@@ -193,23 +270,34 @@ function renderListings() {
   elements.listingGrid.innerHTML = "";
 
   listings.forEach((listing) => {
-    const card = document.createElement("button");
+    const location = getLocationInfo(listing);
+    const card = document.createElement("article");
     card.className = "listing-card";
-    card.type = "button";
     card.innerHTML = `
-      <span class="card-topline">${listing.category} / ${listing.area}</span>
-      <h3>${listing.title}</h3>
-      <p>${listing.shortDescription}</p>
-      <span class="card-footer">
-        <span>${listing.priceLevel}</span>
-        <span>${listing.estimatedDuration}</span>
-      </span>
-      <span class="card-cta">
-        <span>${listing.ctaLabel || "View experience"}</span>
-        <span aria-hidden="true">View details</span>
+      <button class="listing-card-main" type="button" aria-label="View ${listing.title} details">
+        <img class="listing-photo" src="${getListingImage(listing)}" alt="${listing.category} experience preview for ${listing.title}">
+        <span class="card-body">
+          <span class="card-topline">${listing.category} / ${listing.area}</span>
+          <h3>${listing.title}</h3>
+          <span class="card-location">Map anchor: ${location.label}</span>
+          <p>${listing.shortDescription}</p>
+          <span class="card-footer">
+            <span>${listing.priceLevel}</span>
+            <span>${listing.estimatedDuration}</span>
+          </span>
+          <span class="card-cta">
+            <span>${listing.ctaLabel || "View experience"}</span>
+            <span aria-hidden="true">View details</span>
+          </span>
+        </span>
+      </button>
+      <span class="map-actions" aria-label="Open ${location.label} in maps">
+        <a href="${location.googleUrl}" target="_blank" rel="noopener" aria-label="Open ${location.label} in Google Maps">Google Maps</a>
+        <a href="${location.appleUrl}" target="_blank" rel="noopener" aria-label="Open ${location.label} in Apple Maps">Apple Maps</a>
       </span>
     `;
-    card.addEventListener("click", () => openDetail(listing.id));
+    card.querySelector(".listing-card-main").addEventListener("click", () => openDetail(listing.id));
+    card.querySelectorAll(".map-actions a").forEach((link) => link.addEventListener("click", openMap));
     elements.listingGrid.append(card);
   });
 
@@ -227,6 +315,7 @@ function openDetail(listingId) {
     return;
   }
 
+  const location = getLocationInfo(listing);
   elements.detailMeta.textContent = `${listing.category} / ${listing.area}`;
   elements.detailTitle.textContent = listing.title;
   elements.detailDescription.textContent = listing.longDescription;
@@ -244,6 +333,24 @@ function openDetail(listingId) {
     node.textContent = tag;
     elements.detailTags.append(node);
   });
+
+  const existingLocation = elements.detailPanel.querySelector(".detail-location");
+  if (existingLocation) {
+    existingLocation.remove();
+  }
+
+  const locationBlock = document.createElement("div");
+  locationBlock.className = "detail-location";
+  locationBlock.innerHTML = `
+    <strong>Location</strong>
+    <span>${location.label}</span>
+    <div class="map-actions">
+      <a href="${location.googleUrl}" target="_blank" rel="noopener">Open in Google Maps</a>
+      <a href="${location.appleUrl}" target="_blank" rel="noopener">Open in Apple Maps</a>
+    </div>
+    <small>Prototype note: routes and concierge concepts use a map anchor, while named venues use their real-world place search.</small>
+  `;
+  elements.detailTags.before(locationBlock);
 
   elements.detailPanel.classList.add("is-open");
   elements.detailPanel.setAttribute("aria-hidden", "false");

@@ -86,11 +86,13 @@ textarea {
 
 .nav-links {
   display: flex;
-  flex: 1 1 100%;
-  gap: 8px;
-  justify-content: space-between;
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  margin-left: auto;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
 }
 
 .nav-links a,
@@ -102,7 +104,7 @@ textarea {
   display: inline-flex;
   min-height: 34px;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 9px;
   border-radius: 999px;
 }
 
@@ -113,9 +115,9 @@ textarea {
 }
 
 .nav-links .partner-nav-cta {
-  min-height: 44px;
+  min-height: 40px;
   gap: 8px;
-  padding: 0 16px;
+  padding: 0 12px 0 14px;
   color: #fff;
   background:
     linear-gradient(135deg, var(--sage-dark), var(--sage));

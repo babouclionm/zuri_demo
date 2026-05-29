@@ -1297,6 +1297,13 @@ dd {
   color: var(--muted);
 }
 
+.choice-card .button {
+  width: fit-content;
+  min-height: 40px;
+  padding: 0 14px;
+  font-size: 0.9rem;
+}
+
 .partner-choice p,
 .rwanda-region p,
 .us-region p {
